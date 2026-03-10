@@ -1,0 +1,178 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: CineReservas API
+  description: API para gestionar reservas de un cine.
+paths: 
+  /movies:
+    get:
+      summary: Obten la lista de películas.
+      responses:
+        '200': 
+          description: Lista de películas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+
+  /showtimes/{movieID}:
+    get:
+      summary: Obten las funciones disponibles de una película.
+      operationId: getShowtimes
+      parameters:
+        - name: movieID
+          in: path
+          required: true
+          description: ID de la película.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de funciones.
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Showtime'
+        '404':
+          description: Película no encontrada.
+
+  /bookings/reserve:
+    post:
+      summary: Reserva asientos.
+      operationId: reserveSeats
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReservationRequest'
+      responses:
+        '201':
+          description: Reserva creada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationResponse'
+        '409':
+          description: Asiento ya reservado.
+
+  /bookings/pay:
+    post:
+      summary: Pagar la reserva.
+      operationId: payReservation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '200':
+          description: Pago exitoso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '404':
+          description: Reserva no encontrada
+        '409':
+          description: Reserva expirada
+
+components:
+
+  schemas:
+
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Interestelar
+        duration:
+          type: integer
+          example: 169
+
+    Showtime:
+      type: object
+      properties: 
+        id:
+          type: integer
+          example: 1
+        movieID: 
+          type: integer
+          example: 1
+        room:
+          type: string
+          example: Sala 1
+        startTime:
+          type: string
+          format: date-time
+          example: 2025-03-14T13:00:00
+    
+    ReservationRequest:
+      type: object
+      required:
+        - userId
+        - functionId
+        - seats
+      properties:
+        userId:
+          type: integer
+          example: 1
+        functionId:
+          type: integer
+          example: 1
+        seats:
+          type: array
+          items:
+            type: string
+          example:
+            - F5
+            - F6
+    
+    ReservationResponse:
+      type: object
+      properties:
+        reservationId:
+          type: integer
+          example: 1
+        status:
+          type: string
+          example: RESERVED
+        expiresAt:
+          type: string
+          format: date-time
+          example: 2025-03-07T18:00:00
+
+    PaymentRequest:
+      type: object
+      required:
+        - reservationId
+        - paymentMethod
+      properties:
+        reservationId:
+          type: integer
+          example: 1
+        paymentMethod:
+          type: string
+          example: CREDIT_CARD
+
+    PaymentResponse:
+      type: object
+      properties:
+        reservationId:
+          type: integer
+          example: 1
+        status:
+          type: string
+          example: CONFIRMED
+        paymentStatus:
+          type: string
+          example: SUCCESS
