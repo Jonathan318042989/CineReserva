@@ -1,0 +1,16 @@
+$kind: http-request
+name: movies
+url: https://reqres.in/api/users?page=2
+method: GET
+queryParams:
+  - key: page
+    value: "2"
+scripts:
+  - type: afterResponse
+    code: "var BASE_URL=\"http://reqres.in\";//local variable\r
+
+      pm.globals.set(\"BASE_URL\",BASE_URL);//creating environment\r
+
+      pm.collectionVariables.set(\"BASE_URL\",BASE_URL);//setting environment"
+    language: text/javascript
+order: 1000

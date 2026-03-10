@@ -2,6 +2,8 @@ package com.cine.cine_reserva.butaca_funcion.entity;
 
 import com.cine.cine_reserva.butaca.entity.Butaca;
 import com.cine.cine_reserva.funcion.entity.Funcion;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,8 +34,9 @@ public class ButacaFuncion {
 
     @ManyToOne
     @JoinColumn(name = "funcion_id")
+    @JsonIgnore
     private Funcion funcion;
 
     @Version
-    private Long version;
+    private Long version = 0L;
 }

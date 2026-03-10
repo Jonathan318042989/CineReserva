@@ -1,0 +1,16 @@
+$kind: http-request
+name: reserve usuario2
+url: http://localhost:8080/bookings/reserve
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"usuarioId\": 2,\r
+
+    \  \"funcionId\": 1,\r
+
+    \  \"butacaFuncionIds\": [1]\r
+
+    }"
+order: 3450

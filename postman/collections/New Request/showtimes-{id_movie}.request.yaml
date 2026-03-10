@@ -1,0 +1,5 @@
+$kind: http-request
+name: showtimes/{id_movie}
+url: ""
+method: GET
+order: 2000

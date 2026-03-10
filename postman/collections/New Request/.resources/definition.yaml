@@ -1,0 +1,11 @@
+$kind: collection
+variables:
+  - key: BASE_URL
+    value: ""
+    disabled: false
+  - key: BASE_URL
+    value: ""
+    disabled: false
+  - key: BASE_URL
+    value: ""
+    disabled: false

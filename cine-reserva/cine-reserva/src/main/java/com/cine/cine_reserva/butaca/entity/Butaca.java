@@ -1,6 +1,8 @@
 package com.cine.cine_reserva.butaca.entity;
 
 import com.cine.cine_reserva.sala.entity.Sala;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,5 +34,6 @@ public class Butaca {
 
     @ManyToOne
     @JoinColumn(name = "sala_id")
+    @JsonIgnore
     private Sala sala;
 }

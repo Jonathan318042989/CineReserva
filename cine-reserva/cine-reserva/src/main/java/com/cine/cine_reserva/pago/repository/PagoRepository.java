@@ -1,6 +1,9 @@
 package com.cine.cine_reserva.pago.repository;
 
 import com.cine.cine_reserva.pago.entity.Pago;
+
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PagoRepository extends JpaRepository<Pago, Long> {
+    Optional<Pago> findByReservaId(Long reservaId);
 }

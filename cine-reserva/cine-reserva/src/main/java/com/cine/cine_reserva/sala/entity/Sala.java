@@ -1,6 +1,8 @@
 package com.cine.cine_reserva.sala.entity;
 
 import com.cine.cine_reserva.butaca.entity.Butaca;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -30,5 +32,6 @@ public class Sala {
     private Integer capacidad;
 
     @OneToMany(mappedBy = "sala")
+    @JsonIgnore
     private List<Butaca> butacas;
 }

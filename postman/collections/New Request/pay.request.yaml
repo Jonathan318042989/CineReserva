@@ -1,0 +1,5 @@
+$kind: http-request
+name: pay
+url: http://localhost:8080/pay/1
+method: POST
+order: 5000
