@@ -38,5 +38,5 @@ public class ButacaFuncion {
     private Funcion funcion;
 
     @Version
-    private Long version = 0L;
+    private Long version;
 }

@@ -12,10 +12,11 @@ Martínez Camarillo Jonathan
 - Hibernate
 - H2 Database
 - Maven
+- Postman
 
 # Como ejecutar el proyecto
 - Clonar el repositorio
-$ https://github.com/Jonathan318042989/CineReserva.git
+$ git clone https://github.com/Jonathan318042989/CineReserva.git
 
 - Dirigirse al directorio
 $ cd CineReserva\cine-reserva\cine-reserva
@@ -31,7 +32,9 @@ http://localhost:8080/h2-console
 - Configuración de conexión:
 
     JDBC URL: jdbc:h2:mem:cinema-db
+
     User: sa
+
     Password:
 
 
@@ -75,6 +78,7 @@ con los siguientes metodos:
 Ejemplos:
 
 $ POST /bookings/pay/1?metodo=PAYPAL
+
 $ POST /bookings/pay/2?metodo=TARJETA_CREDITO
 
 # Decisiones de diseño

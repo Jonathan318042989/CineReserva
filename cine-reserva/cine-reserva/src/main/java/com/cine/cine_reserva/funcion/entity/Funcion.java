@@ -3,7 +3,6 @@ package com.cine.cine_reserva.funcion.entity;
 import com.cine.cine_reserva.pelicula.entity.Pelicula;
 import com.cine.cine_reserva.sala.entity.Sala;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.cine.cine_reserva.butaca_funcion.entity.ButacaFuncion;
 import java.util.List;
 import jakarta.persistence.*;

@@ -5,7 +5,6 @@ import com.cine.cine_reserva.reserva.entity.Reserva;
 import com.cine.cine_reserva.reserva.repository.ReservaRepository;
 import com.cine.cine_reserva.butaca_funcion.entity.ButacaFuncion;
 import com.cine.cine_reserva.butaca_funcion.entity.EstadoButaca;
-import com.cine.cine_reserva.butaca_funcion.repository.ButacaFuncionRepository;
 
 import lombok.RequiredArgsConstructor;
 
